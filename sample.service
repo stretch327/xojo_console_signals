@@ -1,0 +1,34 @@
+[Unit]
+Description=My Example Service
+
+[Service]
+
+# notify tells systemd that it should be expecting a signal
+# when the app is ready
+Type=notify
+
+# Where notify signals will be coming from
+NotifyAccess=main
+
+# Path and parameters for launching the app
+ExecStart=/path/to/your/service/binary -p 1
+
+# Path of where to find the PID file
+PIDFile=/path/to/pid/file
+
+# Restart the app after 3 seconds
+RestartSec=3
+
+# Restart the app regardless of how it was stopped
+Restart=always
+
+# User & Group to run the app
+User=george.washington
+Group=presidents
+
+# Allow the app to not send a signal for 10 seconds before kill
+# Should be longer than the WatchdogTimer period in the app
+WatchdogSec=10
+
+[Install]
+WantedBy=default.target
