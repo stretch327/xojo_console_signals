@@ -1,5 +1,5 @@
 # xojo_console_signals
-An example of using system signals with Linux Xojo console and web apps with an additional SystemD module which allows you to hook into the SystemD watchdog system. Watchdog will watch your app to make sure it hasn't hung and if it has, will automatically kill and restart your app.
+An example of using system signals with macOS & Linux Xojo console and web apps with an additional SystemD module for Linux which allows you to hook into the SystemD watchdog system. Watchdog will watch your app to make sure it hasn't hung and if it has, will automatically kill and restart your app.
 
 ## SystemD example file
 
