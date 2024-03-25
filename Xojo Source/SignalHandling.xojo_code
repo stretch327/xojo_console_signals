@@ -7,11 +7,11 @@ Protected Module SignalHandling
 		  Case SignalHandling.Signals.SIGCONT // This is the first message we'll get
 		    
 		    //let the app spin down on its own
-		    _mShouldShutdown = True
+		    mShouldShutdown = True
 		    
 		  Case SignalHandling.Signals.SIGTERM // This is the second message we'll get
 		    // Termination signal. Tell the app it's okay to shut down on its own
-		    _mShouldShutdown = True
+		    mShouldShutdown = True
 		    
 		  End Select
 		  
@@ -89,7 +89,7 @@ Protected Module SignalHandling
 	#tag EndMethod
 
 	#tag DelegateDeclaration, Flags = &h21
-		Private Delegate Sub SignalHandler(sigID As SignalHandling.Signals)
+		Private Delegate Sub SignalHandler(sigID As SignalHandling . Signals)
 	#tag EndDelegateDeclaration
 
 	#tag Method, Flags = &h1
@@ -118,21 +118,21 @@ Protected Module SignalHandling
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mShouldShutdown As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mSignalDictionary As Dictionary
 	#tag EndProperty
 
 	#tag ComputedProperty, Flags = &h1
 		#tag Getter
 			Get
-			  return _mShouldShutdown
+			  return mShouldShutdown
 			End Get
 		#tag EndGetter
 		Protected ShouldShutdown As Boolean
 	#tag EndComputedProperty
-
-	#tag Property, Flags = &h21
-		Private _mShouldShutdown As Boolean = False
-	#tag EndProperty
 
 
 	#tag Structure, Name = sigaction, Flags = &h21
